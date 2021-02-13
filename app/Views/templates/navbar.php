@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+<nav class="main-header navbar navbar-expand-md navbar-light navbar-dark">
     <div class="container">
       <a href="/home" class="navbar-brand">
         <img src="/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -21,7 +21,7 @@
             <a href="/data/obat" class="nav-link">Data Obat</a>
           </li>
           <li class="nav-item">
-            <a href="/data/supplier" class="nav-link">Data Supplier</a>
+            <a href="/data/suplier" class="nav-link">Data Supplier</a>
           </li>
           <li class="nav-item">
             <a href="/data/transaksi" class="nav-link">Data Transaksi</a>

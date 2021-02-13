@@ -6,6 +6,9 @@
     <div class="content">
       <div class="container">
         <div class="card">
+        	<div class="card-header">
+        		<a href="/data/obat/new" class="btn btn-primary">Tambah Data Obat</a>
+        	</div>
             <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
                   	<thead>
@@ -13,7 +16,7 @@
 		                    <th>Icon</th>
 		                    <th>Kode Obat</th>
 		                    <th>Kode Supplier</th>
-		                    <th>Nama</th>
+		                    <th>Nama Obat</th>
 		                    <th>Produsen</th>
 		                    <th>Harga</th>
 		                    <th>Stok</th>

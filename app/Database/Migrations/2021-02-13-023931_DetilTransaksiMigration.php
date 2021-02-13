@@ -4,10 +4,11 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateDetilTransaksiTable extends Migration
+class DetilTransaksiMigration extends Migration
 {
 	public function up()
 	{
+        $this->db->disableForeignKeyChecks();
 		$this->forge->addField([
             'kode_detil' => [
                 'type' => 'INT',
@@ -26,7 +27,10 @@ class CreateDetilTransaksiTable extends Migration
             ],
         ]);
         $this->forge->addKey('kode_detil', true);
+        $this->forge->addForeignKey('kode_transaksi','transaksi','kode_transaksi','RESTRICT','RESTRICT');
+        $this->forge->addForeignKey('kode_obat','obat','kode_obat','RESTRICT','RESTRICT');
         $this->forge->createTable('detil_transaksi');
+        $this->db->enableForeignKeyChecks();
 	}
 
 	public function down()

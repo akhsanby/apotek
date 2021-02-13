@@ -4,15 +4,15 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateSupplierTable extends Migration
+class SuplierMigration extends Migration
 {
 	public function up()
 	{
 		$this->forge->addField([
-            'kode_supplier' => [
+            'kode_suplier' => [
                 'type' => 'INT'
             ],
-            'nama_supplier' => [
+            'nama_suplier' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100',
             ],
@@ -27,12 +27,12 @@ class CreateSupplierTable extends Migration
                 'type' => 'INT'
             ]
         ]);
-        $this->forge->addKey('kode_supplier', true);
-        $this->forge->createTable('supplier');
+        $this->forge->addKey('kode_suplier', true);
+        $this->forge->createTable('suplier');
 	}
 
 	public function down()
 	{
-		 $this->forge->dropTable('supplier');
+		 $this->forge->dropTable('suplier');
 	}
 }

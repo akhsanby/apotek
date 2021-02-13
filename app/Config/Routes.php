@@ -33,9 +33,22 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'AuthController::login');
+$routes->post('/login', 'AuthController::loged');
+$routes->get('/logout', 'AuthController::logout');
+
 $routes->get('/home', 'HomeController::index');
+
 $routes->get('/data/obat', 'ObatController::index');
 $routes->get('/data/obat/new', 'ObatController::new');
+$routes->post('/obat/create', 'ObatController::create');
+
+$routes->get('/data/suplier', 'SuplierController::index');
+$routes->get('/data/suplier/new', 'SuplierController::new');
+$routes->post('/suplier/create', 'SuplierController::create');
+
+$routes->get('/data/transaksi', 'TransaksiController::index');
+$routes->get('/data/transaksi/new', 'TransaksiController::new');
+$routes->post('/transaksi/create', 'TransaksiController::create');
 
 /*
  * --------------------------------------------------------------------

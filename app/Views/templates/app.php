@@ -11,10 +11,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 	  	<title><?= $title; ?></title>
 
-	  	<link rel="stylesheet" href="/css/all.min.css">
+	  	<link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+	  	<link rel="stylesheet" href="/css/ionicons.min.css">
 		<link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   		<link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-	  	<link rel="stylesheet" href="/css/adminlte.min.css">
+	  	<link rel="stylesheet" href="/dist/css/adminlte.min.css">
 	  	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 	  	<style>
 	  		.table > tbody > tr > td {
@@ -43,14 +44,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 		</div>
 
-		<script src="/js/jquery.min.js"></script>
-		<script src="/js/bootstrap.bundle.min.js"></script>
-		<script src="/js/all.min.js"></script>
+		<script src="/plugins/jquery/jquery.min.js"></script>
+		<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="/dist/js/adminlte.min.js"></script>
 		<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
 		<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 		<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 		<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-		<script src="/js/adminlte.min.js"></script>
+		<!-- <script src="/dist/js/demo.js"></script> -->
 		<script>
 		  $(function () {
 		    $('#example2').DataTable({

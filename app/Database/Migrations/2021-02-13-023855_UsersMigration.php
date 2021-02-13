@@ -4,14 +4,14 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateUsersTable extends Migration
+class UsersMigration extends Migration
 {
 	public function up()
 	{
+        $this->db->disableForeignKeyChecks();
 		$this->forge->addField([
             'id_user' => [
                 'type' => 'INT',
-                'unsigned' => true,
                 'auto_increment' => true,
             ],
             'username' => [
@@ -25,10 +25,11 @@ class CreateUsersTable extends Migration
         ]);
         $this->forge->addKey('id_user', true);
         $this->forge->createTable('users');
+        $this->db->enableForeignKeyChecks();
 	}
 
 	public function down()
 	{
-		 $this->forge->dropTable('users');
+		$this->forge->dropTable('users');
 	}
 }
