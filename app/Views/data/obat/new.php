@@ -18,12 +18,11 @@
 				                  	</div>
 				                  	<div class="form-group col-md-6">
 				                        <label for="kode_suplier">Kode Suplier</label>
-				                        <select name="kode_suplier" class="form-control" id="kode_suplier" class="form-control">
+				                        <select name="kode_suplier" class="form-control" id="kode_suplier">
 				                          	<option selected disabled>Pilih kode suplier</option>
-				                          	<option>2010</option>
-				                          	<option>2011</option>
-				                          	<option>2012</option>
-				                          	<option>2013</option>
+				                          	<?php foreach($obat as $obat) : ?>
+				                          		<option value="<?= $obat['kode_suplier']; ?>"><?= $obat['kode_suplier']; ?></option>
+				                          	<?php endforeach; ?>
 				                        </select>
 				                    </div>
 			                	</div>
@@ -45,6 +44,8 @@
 				                    <input type="text" name="jml_stok" class="form-control" id="jml_stok">
 				                  </div>
 				                </div>
+				                <label class="d-block">Icon obat</label>
+				                <input type="file" name="icon">
 			                </div>
 			                <div class="card-footer">
 			                  <button type="submit" class="btn btn-primary">Tambah</button>

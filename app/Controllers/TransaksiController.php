@@ -2,21 +2,17 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\RESTful\ResourceController;
+use App\Controllers\BaseController;
 use App\Models\TransaksiModel;
 
-class TransaksiController extends ResourceController
+class TransaksiController extends BaseController
 {
 	protected $transaksiModel;
 	public function __construct()
 	{
 		$this->transaksiModel = new TransaksiModel();
 	}
-	/**
-	 * Return an array of resource objects, themselves in array format
-	 *
-	 * @return mixed
-	 */
+
 	public function index()
 	{
 		// jika tidak ada session username kembalikan ke halaman /login
@@ -32,11 +28,6 @@ class TransaksiController extends ResourceController
 		return view('/data/transaksi/index', $data);
 	}
 
-	/**
-	 * Return a new resource object, with default properties
-	 *
-	 * @return mixed
-	 */
 	public function new()
 	{
 		$data = [
@@ -48,41 +39,21 @@ class TransaksiController extends ResourceController
 		return view('/data/transaksi/new', $data);
 	}
 
-	/**
-	 * Create a new resource object, from "posted" parameters
-	 *
-	 * @return mixed
-	 */
 	public function create()
 	{
 		//
 	}
 
-	/**
-	 * Return the editable properties of a resource object
-	 *
-	 * @return mixed
-	 */
 	public function edit($id = null)
 	{
 		//
 	}
 
-	/**
-	 * Add or update a model resource, from "posted" properties
-	 *
-	 * @return mixed
-	 */
 	public function update($id = null)
 	{
 		//
 	}
 
-	/**
-	 * Delete the designated resource object from the model
-	 *
-	 * @return mixed
-	 */
 	public function delete($id = null)
 	{
 		//

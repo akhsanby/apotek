@@ -15,7 +15,7 @@
 	                  	<tr>
 		                    <th>Icon</th>
 		                    <th>Kode Obat</th>
-		                    <th>Kode Supplier</th>
+		                    <th>Kode Suplier</th>
 		                    <th>Nama Obat</th>
 		                    <th>Produsen</th>
 		                    <th>Harga</th>
@@ -27,17 +27,21 @@
                   		<?php foreach($obat as $obat) : ?>
 	                  	<tr>
 		                    <td>
-		                    	<img class="rounded" src="<?= $obat['foto']; ?>" alt="">
+		                    	<img width="70" height="70" src="/img/obat/<?= $obat['icon']; ?>">
 		                    </td>
 		                    <td><?= $obat['kode_obat']; ?></td>
-		                    <td><?= $obat['kode_supplier']; ?></td>
+		                    <td><?= $obat['kode_suplier']; ?></td>
 		                    <td><?= $obat['nama_obat']; ?></td>
 		                    <td><?= $obat['produsen']; ?></td>
-		                    <td>Rp. <?= $obat['harga']; ?></td>
+		                    <td><?= $obat['harga']; ?></td>
 		                    <td><?= $obat['jml_stok']; ?></td>
 		                    <td>
-		                    	<a href="/data/obat/edit/<?= $obat['kode_obat'] ?>" class="btn btn-success">edit</a>
-		                    	<a href="/data/obat/delete/<?= $obat['kode_obat'] ?>" class="btn btn-danger">delete</a>
+		                    	<a href="/obat/edit/<?= $obat['kode_obat'] ?>" class="btn btn-success">edit</a>
+		                    	<form action="/obat/delete/<?= $obat['kode_obat'] ?>" method="post" class="d-inline">
+		                    		<input type="hidden" name="_method" value="DELETE" />
+		                    		<?= csrf_field(); ?>
+		                    		<button type="submit" class="btn btn-danger">delete</button>
+		                    	</form>
 		                    </td>
 	                  	</tr>
 	                  	<?php endforeach ?>

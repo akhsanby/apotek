@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\RESTful\ResourceController;
+use App\Controllers\BaseController;
 use App\Models\SuplierModel;
 
-class SuplierController extends ResourceController
+class SuplierController extends BaseController
 {
 	protected $suplierModel;
 	public function __construct()
@@ -13,11 +13,6 @@ class SuplierController extends ResourceController
 		$this->suplierModel = new SuplierModel();
 	}
 
-	/**
-	 * Return an array of resource objects, themselves in array format
-	 *
-	 * @return mixed
-	 */
 	public function index()
 	{
 		// jika tidak ada session username kembalikan ke halaman /login
@@ -33,15 +28,10 @@ class SuplierController extends ResourceController
 		return view('/data/suplier/index', $data);	
 	}
 
-	/**
-	 * Return a new resource object, with default properties
-	 *
-	 * @return mixed
-	 */
 	public function new()
 	{
 		$data = [
-			'title' => 'Daftar Data Suplier',
+			'title' => 'Data Suplier',
 			'headerTitle' => 'Tambah Data Suplier',
 			'username' => session()->get('username')
 		];
@@ -49,24 +39,21 @@ class SuplierController extends ResourceController
 		return view('/data/suplier/new', $data);
 	}
 
-	/**
-	 * Create a new resource object, from "posted" parameters
-	 *
-	 * @return mixed
-	 */
 	public function create()
 	{
-		//
+		return $this->suplierModel->createSuplier();
 	}
 
-	/**
-	 * Return the editable properties of a resource object
-	 *
-	 * @return mixed
-	 */
-	public function edit($id = null)
+	public function edit($kode_suplier)
 	{
-		//
+		$data = [
+			'title' => 'Data Suplier',
+			'headerTitle' => 'Edit Data Suplier',
+			'username' => session()->get('username'),
+			'suplier' => $this->suplierModel->getSuplier($kode_suplier)
+		];
+
+		return view('/data/suplier/edit', $data);
 	}
 
 	/**
@@ -74,9 +61,9 @@ class SuplierController extends ResourceController
 	 *
 	 * @return mixed
 	 */
-	public function update($id = null)
+	public function update($kode_suplier)
 	{
-		//
+		return $this->suplierModel->updateSuplier($kode_suplier);
 	}
 
 	/**
@@ -84,8 +71,8 @@ class SuplierController extends ResourceController
 	 *
 	 * @return mixed
 	 */
-	public function delete($id = null)
+	public function delete($kode_suplier)
 	{
-		//
+		return $this->suplierModel->deleteSuplier($kode_suplier);
 	}
 }

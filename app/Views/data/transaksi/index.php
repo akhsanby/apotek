@@ -13,10 +13,9 @@
                 <table id="example2" class="table table-bordered table-hover">
                   	<thead>
 	                  	<tr>
-		                    <th>Kode Transaksi</th>
 		                    <th>Nama Pembeli</th>
 		                    <th>Tanggal</th>
-		                    <th>Subtotal</th>
+                            <th>Obat terjual</th>
 		                    <th>Total</th>
 		                    <th>Opsi</th>
 	                  	</tr>
@@ -24,15 +23,14 @@
                   	<tbody>
                   		<?php foreach($transaksi as $transaksi) : ?>
 	                  	<tr>
-		                    <td><?= $transaksi['kode_transaksi']; ?></td>
-                        <td><?= $transaksi['nama_pembeli']; ?></td>
-                        <td><?= $transaksi['tgl_transaksi']; ?></td>
-                        <td><?= $transaksi['sub_total']; ?></td>
-                        <td><?= $transaksi['total']; ?></td>
-                        <td>
-                          <a href="" class="btn btn-success">edit</a>
-                          <a href="" class="btn btn-danger">delete</a>
-                        </td>
+                            <td><?= $transaksi['nama_pembeli']; ?></td>
+                            <td><?= $transaksi['tgl_transaksi']; ?></td>
+                            <td></td>
+                            <td><?= $transaksi['total']; ?></td>
+                            <td>
+                              <a href="" class="btn btn-success">edit</a>
+                              <a href="" class="btn btn-danger">delete</a>
+                            </td>
 	                  	</tr>
 	                  	<?php endforeach ?>
                   	</tbody>

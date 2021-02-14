@@ -7,7 +7,7 @@
       <div class="container">
         <div class="card">
         	<div class="card-header">
-        		<a href="/data/suplier/new" class="btn btn-primary">Tambah Data Suplier</a>
+        		<a href="/suplier/new" class="btn btn-primary">Tambah Data Suplier</a>
         	</div>
             <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
@@ -30,8 +30,12 @@
                         <td><?= $suplier['kota'] ?></td>
                         <td><?= $suplier['telp'] ?></td>
                         <td>
-                          <a href="">edit</a>
-                          <a href="">delete</a>
+                          <a href="/suplier/edit/<?= $suplier['kode_suplier'] ?>" class="btn btn-success">edit</a>
+                          <form action="/suplier/delete/<?= $suplier['kode_suplier'] ?>" method="post" class="d-inline">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <?= csrf_field(); ?>
+                            <button type="submit" class="btn btn-danger">delete</button>
+                          </form>
                         </td>
 	                  	</tr>
 	                  	<?php endforeach ?>

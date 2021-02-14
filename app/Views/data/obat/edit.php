@@ -8,47 +8,48 @@
       		<div class="row">
                 <div class="col-md-6">
             		<div class="card card-primary">
-			        	<form role="form" action="/obat/update" method="post" enctype="multipart/form-data">
+			        	<form role="form" action="/obat/update/<?= $obat['kode_obat'] ?>" method="post" enctype="multipart/form-data">
 			                <div class="card-body">
 			                	<?= csrf_field(); ?>
-			                	<input type="hidden" name="_method" value="PUT" />
+			                	<input type="hidden" name="_method" value="PUT">
+			                	<input type="hidden" name="iconLama" value="<?= $obat['icon'] ?>">
 			                	<div class="row">
 				                 	<div class="form-group col-md-6">
 				                    	<label for="kode_obat">Kode Obat</label>
-				                    	<input type="text" name="kode_obat" class="form-control" id="kode_obat">
+				                    	<input type="text" name="kode_obat" class="form-control" id="kode_obat" value="<?= $obat['kode_obat'] ?>" readonly>
 				                  	</div>
 				                  	<div class="form-group col-md-6">
 				                        <label for="kode_suplier">Kode Suplier</label>
-				                        <select name="kode_suplier" class="form-control" id="kode_suplier" class="form-control">
-				                          	<option selected disabled>Pilih kode suplier</option>
-				                          	<option>2010</option>
-				                          	<option>2011</option>
-				                          	<option>2012</option>
-				                          	<option>2013</option>
-				                        </select>
+				                        <?= form_dropdown('kode_suplier', $nama_suplier, $obat['kode_suplier'], ['class' => 'form-control', 'id' => 'kode_suplier']); ?>
 				                    </div>
 			                	</div>
 				                  <div class="form-group">
 				                    <label for="nama_obat">Nama Obat</label>
-				                    <input type="text" name="nama_obat" class="form-control" id="nama_obat">
+				                    <input type="text" name="nama_obat" class="form-control" id="nama_obat" value="<?= $obat['nama_obat'] ?>">
 				                  </div>
 				                  <div class="form-group">
 				                    <label for="produsen">Produsen</label>
-				                    <input type="text" name="produsen" class="form-control" id="produsen">
+				                    <input type="text" name="produsen" class="form-control" id="produsen" value="<?= $obat['produsen'] ?>">
 				                  </div>
 				                <div class="row">
 				                  <div class="form-group col-md-6">
 				                    <label for="harga">Harga</label>
-				                    <input type="text" name="harga" class="form-control" id="harga">
+				                    <input type="text" name="harga" class="form-control" id="harga" value="<?= $obat['harga'] ?>">
 				                  </div>
 				                  <div class="form-group col-md-6">
 				                    <label for="jml_stok">Stok</label>
-				                    <input type="text" name="jml_stok" class="form-control" id="jml_stok">
+				                    <input type="text" name="jml_stok" class="form-control" id="jml_stok" value="<?= $obat['jml_stok'] ?>">
 				                  </div>
 				                </div>
+				                <div class="row">
+			                		<div class="col-md">
+			                			<img width="100" height="100" src="/img/obat/<?= $obat['icon'] ?>" class="d-inline">
+			                			<input type="file" name="icon">
+			                		</div>
+			                	</div>
 			                </div>
 			                <div class="card-footer">
-			                  <button type="submit" class="btn btn-primary">Edit</button>
+			                  <button type="submit" class="btn btn-primary">Update</button>
 			                  <a href="/data/obat" class="btn btn-secondary">Batal</a>
 			                </div>
 			            </form>

@@ -2,83 +2,68 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\RESTful\ResourceController;
-use App\Models\ObatModel;
+use App\Controllers\BaseController;
+use App\Models\{ObatModel, SuplierModel};
 
-class ObatController extends ResourceController
+class ObatController extends BaseController
 {
 	protected $obatModel;
+	protected $suplierModel;
 	public function __construct()
 	{
 		$this->obatModel = new ObatModel();
+		$this->suplierModel = new SuplierModel();
+		helper('form');
 	}
 
-	/**
-	 * Return an array of resource objects, themselves in array format
-	 *
-	 * @return mixed
-	 */
 	public function index()
 	{
 		// jika tidak ada session username kembalikan ke halaman /login
 		if (!session()->has('username')) return redirect()->to('/');
 
 		$data = [
-			'title' => 'Daftar Data Obat',
-			'headerTitle' => 'Daftar Data Obat',
+			'title' => 'Daftar Data obat',
+			'headerTitle' => 'Daftar Data obat',
 			'username' => session()->get('username'),
 			'obat' => $this->obatModel->getObat()
 		];
-		
-		return view('/data/obat/index', $data);
+
+		return view('/data/obat/index', $data);	
 	}
 
-	/**
-	 * Return a new resource object, with default properties
-	 *
-	 * @return mixed
-	 */
 	public function new()
 	{
 		$data = [
-			'title' => 'Daftar Data Obat',
-			'headerTitle' => 'Tambah Data Obat',
-			'username' => session()->get('username')
+			'title' => 'Data obat',
+			'headerTitle' => 'Tambah Data obat',
+			'username' => session()->get('username'),
+			'obat' => $this->obatModel->getObat()
 		];
 
 		return view('/data/obat/new', $data);
 	}
 
-	/**
-	 * Create a new resource object, from "posted" parameters
-	 *
-	 * @return mixed
-	 */
 	public function create()
 	{
-		$data = [
-			'kode_obat' => $this->request->getVar('kode_obat'),
-			'kode_suplier' => $this->request->getVar('kode_suplier'),
-			'kode_detil' => 100,
-			'nama_obat' => $this->request->getVar('nama_obat'),
-			'produsen' => $this->request->getVar('produsen'),
-			'harga' => $this->request->getVar('harga'),
-			'jml_stok' => $this->request->getVar('jml_stok')
-		];
-
-		$this->obatModel->save($data);
-
-		return redirect()->to('/data/obat')->withInput()->with('created', 'Berhasil ditambahkan!');
+		return $this->obatModel->createObat();
 	}
 
-	/**
-	 * Return the editable properties of a resource object
-	 *
-	 * @return mixed
-	 */
-	public function edit($id = null)
+	public function edit($kode_obat)
 	{
-		//
+		$suplier = $this->suplierModel->getSuplier();
+		foreach ($suplier as $suplier) {
+			$nama_suplier[$suplier['kode_suplier']] = $suplier['nama_suplier'];
+		}
+
+		$data = [
+			'title' => 'Data obat',
+			'headerTitle' => 'Edit Data obat',
+			'username' => session()->get('username'),
+			'obat' => $this->obatModel->getObat($kode_obat),
+			'nama_suplier' => $nama_suplier
+		];
+
+		return view('/data/obat/edit', $data);
 	}
 
 	/**
@@ -86,9 +71,9 @@ class ObatController extends ResourceController
 	 *
 	 * @return mixed
 	 */
-	public function update($id = null)
+	public function update($kode_obat)
 	{
-		//
+		return $this->obatModel->updateobat($kode_obat);
 	}
 
 	/**
@@ -96,8 +81,8 @@ class ObatController extends ResourceController
 	 *
 	 * @return mixed
 	 */
-	public function delete($id = null)
+	public function delete($kode_obat)
 	{
-		//
+		return $this->obatModel->deleteobat($kode_obat);
 	}
 }

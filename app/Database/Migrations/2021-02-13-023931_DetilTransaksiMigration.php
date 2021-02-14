@@ -12,6 +12,7 @@ class DetilTransaksiMigration extends Migration
 		$this->forge->addField([
             'kode_detil' => [
                 'type' => 'INT',
+                'auto_increment' => true
             ],
             'kode_transaksi' => [
                 'type' => 'INT',
@@ -28,7 +29,7 @@ class DetilTransaksiMigration extends Migration
         ]);
         $this->forge->addKey('kode_detil', true);
         $this->forge->addForeignKey('kode_transaksi','transaksi','kode_transaksi','RESTRICT','RESTRICT');
-        $this->forge->addForeignKey('kode_obat','obat','kode_obat','RESTRICT','RESTRICT');
+        $this->forge->addForeignKey('kode_obat','obat','kode_obat');
         $this->forge->createTable('detil_transaksi');
         $this->db->enableForeignKeyChecks();
 	}

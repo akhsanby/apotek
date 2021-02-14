@@ -8,15 +8,11 @@ class ObatMigration extends Migration
 {
 	public function up()
 	{
-        $this->db->disableForeignKeyChecks();
 		$this->forge->addField([
             'kode_obat' => [
                 'type' => 'INT',
             ],
-            'kode_supplier' => [
-                'type' => 'INT',
-            ],
-            'kode_detil' => [
+            'kode_suplier' => [
                 'type' => 'INT',
             ],
             'nama_obat' => [
@@ -39,10 +35,7 @@ class ObatMigration extends Migration
             ],
         ]);
         $this->forge->addKey('kode_obat', true);
-        $this->forge->addForeignKey('kode_detil','detil_transaksi','kode_detil','RESTRICT','RESTRICT');
-        $this->forge->addForeignKey('kode_supplier','supplier','kode_supplier','RESTRICT','RESTRICT');
         $this->forge->createTable('obat');
-        $this->db->enableForeignKeyChecks();
 	}
 
 	public function down()
