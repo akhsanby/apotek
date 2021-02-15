@@ -40,7 +40,7 @@
 		                    	<form action="/obat/delete/<?= $obat['kode_obat'] ?>" method="post" class="d-inline">
 		                    		<input type="hidden" name="_method" value="DELETE" />
 		                    		<?= csrf_field(); ?>
-		                    		<button type="submit" class="btn btn-danger">delete</button>
+		                    		<button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?');">delete</button>
 		                    	</form>
 		                    </td>
 	                  	</tr>

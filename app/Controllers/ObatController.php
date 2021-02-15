@@ -9,11 +9,13 @@ class ObatController extends BaseController
 {
 	protected $obatModel;
 	protected $suplierModel;
+	protected $validation;
+
 	public function __construct()
 	{
 		$this->obatModel = new ObatModel();
 		$this->suplierModel = new SuplierModel();
-		helper('form');
+		$this->validation = \Config\Services::validation();
 	}
 
 	public function index()
@@ -23,7 +25,7 @@ class ObatController extends BaseController
 
 		$data = [
 			'title' => 'Daftar Data obat',
-			'headerTitle' => 'Daftar Data obat',
+			'headerTitle' => 'Daftar Data Obat',
 			'username' => session()->get('username'),
 			'obat' => $this->obatModel->getObat()
 		];
@@ -35,9 +37,10 @@ class ObatController extends BaseController
 	{
 		$data = [
 			'title' => 'Data obat',
-			'headerTitle' => 'Tambah Data obat',
+			'headerTitle' => 'Tambah Data Obat',
 			'username' => session()->get('username'),
-			'obat' => $this->obatModel->getObat()
+			'obat' => $this->obatModel->getObat(),
+			'validation' => $this->validation
 		];
 
 		return view('/data/obat/new', $data);
@@ -45,6 +48,18 @@ class ObatController extends BaseController
 
 	public function create()
 	{
+		if (!$this->validate([
+			'kode_obat'		=> 'required|integer|is_unique[obat.kode_obat]',
+	        'kode_suplier'  => 'required|integer',
+	        'nama_obat'     => 'required',
+	        'produsen' 		=> 'required',
+	        'harga' 		=> 'required|integer',
+	        'jml_stok' 		=> 'required|integer',
+	        'icon' 			=> 'max_size[icon,1024]|is_image[icon]|mime_in[icon,image/jpg,image/png,image/jpeg]'
+		])) {
+			return redirect()->to('/data/obat/new')->withInput();
+		}
+
 		return $this->obatModel->createObat();
 	}
 
@@ -52,37 +67,38 @@ class ObatController extends BaseController
 	{
 		$suplier = $this->suplierModel->getSuplier();
 		foreach ($suplier as $suplier) {
-			$nama_suplier[$suplier['kode_suplier']] = $suplier['nama_suplier'];
+			$kode_suplier[$suplier['kode_suplier']] = $suplier['kode_suplier'];
 		}
 
 		$data = [
 			'title' => 'Data obat',
-			'headerTitle' => 'Edit Data obat',
+			'headerTitle' => 'Edit Data Obat',
 			'username' => session()->get('username'),
 			'obat' => $this->obatModel->getObat($kode_obat),
-			'nama_suplier' => $nama_suplier
+			'kode_suplier' => $kode_suplier,
+			'validation' => $this->validation
 		];
 
 		return view('/data/obat/edit', $data);
 	}
 
-	/**
-	 * Add or update a model resource, from "posted" properties
-	 *
-	 * @return mixed
-	 */
 	public function update($kode_obat)
-	{
-		return $this->obatModel->updateobat($kode_obat);
+	{ 
+		if (!$this->validate([
+	        'nama_obat'     => 'required',
+	        'produsen' 		=> 'required',
+	        'harga' 		=> 'required|integer',
+	        'jml_stok' 		=> 'required|integer',
+	        'icon' 			=> 'max_size[icon,1024]|is_image[icon]|mime_in[icon,image/jpg,image/png,image/jpeg]'
+		])) {
+			return redirect()->to('/obat/edit/' . $kode_obat)->withInput();
+		}
+
+		return $this->obatModel->updateObat($kode_obat);
 	}
 
-	/**
-	 * Delete the designated resource object from the model
-	 *
-	 * @return mixed
-	 */
 	public function delete($kode_obat)
 	{
-		return $this->obatModel->deleteobat($kode_obat);
+		return $this->obatModel->deleteObat($kode_obat);
 	}
 }

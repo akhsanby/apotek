@@ -22,7 +22,7 @@ class ObatModel extends Model
 		$request = \Config\Services::request();
 
 		$icon = $request->getFile('icon');
-// dd($icon->getError() == 4);
+
 		// jika tidak ada foto yang diupload
 		if ($icon->getError() == 4) {
 			$namaIcon = 'default.png';	
