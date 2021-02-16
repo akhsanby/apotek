@@ -19,6 +19,10 @@ class TransaksiMigration extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '100',
             ],
+            'nama_obat' => [
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+            ],
             'tgl_transaksi' => [
                 'type' => 'DATE',
             ],

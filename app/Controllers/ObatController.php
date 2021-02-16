@@ -40,6 +40,7 @@ class ObatController extends BaseController
 			'headerTitle' => 'Tambah Data Obat',
 			'username' => session()->get('username'),
 			'obat' => $this->obatModel->getObat(),
+			'suplier' => $this->suplierModel->getSuplier(),
 			'validation' => $this->validation
 		];
 

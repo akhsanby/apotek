@@ -29,7 +29,7 @@ class ObatMigration extends Migration
             'jml_stok' => [
                 'type' => 'INT',
             ],
-            'foto' => [
+            'icon' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100',
             ],

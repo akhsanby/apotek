@@ -13,19 +13,21 @@
                 <table id="example2" class="table table-bordered table-hover">
                   	<thead>
 	                  	<tr>
-		                    <th>Nama Pembeli</th>
 		                    <th>Tanggal</th>
-                            <th>Obat terjual</th>
-		                    <th>Total</th>
+		                    <th>Nama Pembeli</th>
+                        <th>Obat</th>
+		                    <th>Terjual</th>
+                        <th>Total</th>
 		                    <th>Opsi</th>
 	                  	</tr>
                   	</thead>
                   	<tbody>
                   		<?php foreach($transaksi as $transaksi) : ?>
 	                  	<tr>
-                            <td><?= $transaksi['nama_pembeli']; ?></td>
                             <td><?= $transaksi['tgl_transaksi']; ?></td>
-                            <td></td>
+                            <td><?= $transaksi['nama_pembeli']; ?></td>
+                            <td><?= $transaksi['nama_obat']; ?></td>
+                            <td><?= $transaksi['sub_total']; ?></td>
                             <td><?= $transaksi['total']; ?></td>
                             <td>
                               <a href="" class="btn btn-success">edit</a>

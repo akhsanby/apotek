@@ -23,8 +23,8 @@
 										<label for="kode_suplier">Kode Suplier</label>
 										<select name="kode_suplier" class="form-control <?= $validation->hasError('kode_suplier') ? 'is-invalid' : '' ?>" id="kode_suplier">
 											<option selected disabled>Pilih kode suplier</option>
-											<?php foreach($obat as $obat) : ?>
-												<option value="<?= $obat['kode_suplier']; ?>"><?= $obat['kode_suplier']; ?></option>
+											<?php foreach($suplier as $suplier) : ?>
+												<option value="<?= $suplier['kode_suplier']; ?>"><?= $suplier['kode_suplier']; ?> - <?= $suplier['nama_suplier']; ?></option>
 											<?php endforeach; ?>
 										</select>
 										<div class="invalid-feedback">

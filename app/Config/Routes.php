@@ -55,7 +55,8 @@ $routes->delete('/suplier/delete/(:segment)', 'SuplierController::delete/$1');
 $routes->get('/data/transaksi', 'TransaksiController::index');
 $routes->get('/data/transaksi/new', 'TransaksiController::new');
 $routes->post('/transaksi/create', 'TransaksiController::create');
-$routes->delete('/transaksi/delete/(:segment)', 'TransaksiController::delete/$1');
+// $routes->post('/transaksi/create', 'TransaksiController::create');
+// $routes->delete('/transaksi/delete/(:segment)', 'TransaksiController::delete/$1');
 
 /*
  * --------------------------------------------------------------------

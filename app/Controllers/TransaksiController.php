@@ -3,14 +3,16 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\TransaksiModel;
+use App\Models\{TransaksiModel, ObatModel};
 
 class TransaksiController extends BaseController
 {
 	protected $transaksiModel;
+	protected $obatModel;
 	public function __construct()
 	{
 		$this->transaksiModel = new TransaksiModel();
+		$this->obatModel = new ObatModel();
 	}
 
 	public function index()
@@ -33,7 +35,8 @@ class TransaksiController extends BaseController
 		$data = [
 			'title' => 'Daftar Data Transaksi',
 			'headerTitle' => 'Tambah Data Transaksi',
-			'username' => session()->get('username')
+			'username' => session()->get('username'),
+			'obat' => $this->obatModel->getObat()
 		];
 
 		return view('/data/transaksi/new', $data);
@@ -41,7 +44,18 @@ class TransaksiController extends BaseController
 
 	public function create()
 	{
-		//
+		if (!$this->validate([
+			'kode_transaksi'  => 'required',
+			'nama_pembeli'  => 'required',
+	        'tgl_transaksi'	=> 'required',
+	        'nama_obat'		=> 'required',
+	        'sub_total'		=> 'required|integer',
+	        'total' 		=> 'required|integer'
+		])) {
+			return redirect()->to('/data/transaksi/new')->withInput();
+		}
+		dd($this->request->getVar());
+		return $this->transaksiModel->createTransaksi();
 	}
 
 	public function edit($id = null)
