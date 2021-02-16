@@ -36,27 +36,26 @@ $routes->get('/', 'AuthController::login');
 $routes->post('/login', 'AuthController::loged');
 $routes->get('/logout', 'AuthController::logout');
 
-$routes->get('/home', 'HomeController::index');
+$routes->get('home', 'HomeController::index');
 
-$routes->get('/data/obat', 'ObatController::index');
-$routes->get('/data/obat/new', 'ObatController::new');
-$routes->post('/obat/create', 'ObatController::create');
-$routes->get('/obat/edit/(:segment)', 'ObatController::edit/$1');
-$routes->put('/obat/update/(:segment)', 'ObatController::update/$1');
-$routes->delete('/obat/delete/(:segment)', 'ObatController::delete/$1');
+$routes->get('data/obat', 'ObatController::index');
+$routes->get('obat/new', 'ObatController::new');
+$routes->post('obat/create', 'ObatController::create');
+$routes->get('obat/edit/(:segment)', 'ObatController::edit/$1');
+$routes->put('obat/update/(:segment)', 'ObatController::update/$1');
+$routes->delete('obat/delete/(:segment)', 'ObatController::delete/$1');
 
-$routes->get('/data/suplier', 'SuplierController::index');
-$routes->get('/suplier/new', 'SuplierController::new');
-$routes->post('/suplier/create', 'SuplierController::create');
-$routes->get('/suplier/edit/(:segment)', 'SuplierController::edit/$1');
-$routes->put('/suplier/update/(:segment)', 'SuplierController::update/$1');
-$routes->delete('/suplier/delete/(:segment)', 'SuplierController::delete/$1');
+$routes->get('data/suplier', 'SuplierController::index');
+$routes->get('suplier/new', 'SuplierController::new');
+$routes->post('suplier/create', 'SuplierController::create');
+$routes->get('suplier/edit/(:segment)', 'SuplierController::edit/$1');
+$routes->put('suplier/update/(:segment)', 'SuplierController::update/$1');
+$routes->delete('suplier/delete/(:segment)', 'SuplierController::delete/$1');
 
-$routes->get('/data/transaksi', 'TransaksiController::index');
-$routes->get('/data/transaksi/new', 'TransaksiController::new');
-$routes->post('/transaksi/create', 'TransaksiController::create');
-// $routes->post('/transaksi/create', 'TransaksiController::create');
-// $routes->delete('/transaksi/delete/(:segment)', 'TransaksiController::delete/$1');
+$routes->get('data/transaksi', 'TransaksiController::index');
+$routes->get('transaksi/new', 'TransaksiController::new');
+$routes->post('transaksi/create', 'TransaksiController::create');
+$routes->delete('transaksi/delete/(:segment)', 'TransaksiController::delete/$1');
 
 /*
  * --------------------------------------------------------------------

@@ -58,7 +58,7 @@ class ObatController extends BaseController
 	        'jml_stok' 		=> 'required|integer',
 	        'icon' 			=> 'max_size[icon,1024]|is_image[icon]|mime_in[icon,image/jpg,image/png,image/jpeg]'
 		])) {
-			return redirect()->to('/data/obat/new')->withInput();
+			return redirect()->to('/obat/new')->withInput();
 		}
 
 		return $this->obatModel->createObat();

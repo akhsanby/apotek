@@ -11,7 +11,6 @@
 						<form role="form" action="/transaksi/create" method="post">
 							<div class="card-body">
 								<?= csrf_field(); ?>
-								<input type="hidden" name="_method" value="PUT">
 								<div class="row">
 									<div class="form-group col-md-6">
 										<label for="kode_transaksi">Kode Transaksi</label>

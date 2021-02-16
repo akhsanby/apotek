@@ -9,6 +9,7 @@ class TransaksiController extends BaseController
 {
 	protected $transaksiModel;
 	protected $obatModel;
+
 	public function __construct()
 	{
 		$this->transaksiModel = new TransaksiModel();
@@ -52,24 +53,13 @@ class TransaksiController extends BaseController
 	        'sub_total'		=> 'required|integer',
 	        'total' 		=> 'required|integer'
 		])) {
-			return redirect()->to('/data/transaksi/new')->withInput();
+			return redirect()->to('/transaksi/new')->withInput();
 		}
-		dd($this->request->getVar());
 		return $this->transaksiModel->createTransaksi();
 	}
 
-	public function edit($id = null)
+	public function delete($kode_transaksi)
 	{
-		//
-	}
-
-	public function update($id = null)
-	{
-		//
-	}
-
-	public function delete($id = null)
-	{
-		//
+		return $this->transaksiModel->deleteTransaksi($kode_transaksi);
 	}
 }

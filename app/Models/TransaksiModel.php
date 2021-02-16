@@ -20,8 +20,17 @@ class TransaksiModel extends Model
 	public function createTransaksi()
 	{
 		$request = \Config\Services::request();
-		dd($request->getVar());
-		$this->insert($request->getVar());
+		
+		$data = $request->getVar();
+		$data['id_user'] = session()->get('id_user');
+
+		$this->insert($data);
 		return redirect()->to('/data/transaksi')->withInput()->with('created', 'Berhasil ditambahkan!');
+	}
+
+	public function deleteTransaksi($kode_transaksi)
+	{
+		$this->delete($kode_transaksi);
+		return redirect()->to('/data/transaksi')->with('deleted', 'Berhasil dihapus!');
 	}
 }

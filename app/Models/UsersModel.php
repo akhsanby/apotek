@@ -16,7 +16,10 @@ class UsersModel extends Model
 		$user = $this->where(['username' => $username, 'password' => $password])->first();
 
 		if ($user) {
-			session()->set(['username' => $user['username']]);
+			session()->set([
+				'id_user' => $user['id_user'],
+				'username' => $user['username']
+			]);
 			return redirect()->to('/home');
 		} else {
 			session()->setFlashData('kesalahan', 'Email/password salah!');
