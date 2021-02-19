@@ -27,17 +27,17 @@
 								</div>
 								<div class="form-group">
 									<label for="tgl_transaksi">Pilih Obat</label>
-									<select class="form-control select2 pilih-obat" style="width: 100%;" name="nama_obat">
+									<select class="form-control select2 pilih-obat" style="width: 100%;" name="kode_obat">
 										<option selected disabled>Cari Obat</option>
 										<?php foreach($obat as $obat) : ?>
-											<option value="<?= $obat['harga'] ?>"><?= $obat['nama_obat'] ?></option>
+											<option value="<?= $obat['kode_obat'] ?>" data-harga="<?= $obat['harga'] ?>"><?= $obat['nama_obat'] ?></option>
 										<?php endforeach; ?>
 									</select>
 								</div>
 								<div class="row">
 									<div class="form-group col-md-6">
 										<label for="sub_total">Subtotal</label>
-										<input type="number" name="sub_total" class="form-control jml-obat" id="sub_total" value="1">
+										<input type="number" name="sub_total" class="form-control jml-obat" id="sub_total" value="0">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="total">Total</label>

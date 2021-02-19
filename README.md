@@ -11,10 +11,10 @@ git clone https://github.com/AkhsanBy/apotek.git
 ## Usage
 
 * composer update
-* cp env .env
+* copy file env to .env
 * php spark key:generate
-* buat database 'db_apotek'
 * setting .env
 * php spark migrate
+* php spark db:seed UserSeeder
 * php serve serve
 * username : admin - password : admin

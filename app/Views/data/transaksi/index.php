@@ -23,9 +23,10 @@
                     <thead>
                         <tr>
                             <th>Tanggal</th>
+                            <th>Admin</th>
                             <th>Nama Pembeli</th>
-                            <th>Obat</th>
-                            <th>Terjual</th>
+                            <th>Obat terjual</th>
+                            <th>Subtotal</th>
                             <th>Total</th>
                             <th>Opsi</th>
                         </tr>
@@ -34,12 +35,13 @@
                         <?php foreach($transaksi as $transaksi) : ?>
                             <tr>
                                 <td><?= $transaksi['tgl_transaksi']; ?></td>
+                                <td><?= $transaksi['username']; ?></td>
                                 <td><?= $transaksi['nama_pembeli']; ?></td>
                                 <td><?= $transaksi['nama_obat']; ?></td>
                                 <td><?= $transaksi['sub_total']; ?></td>
                                 <td><?= $transaksi['total']; ?></td>
                                 <td>
-                                    <form action="/transaksi/delete/<?= $transaksi['kode_transaksi']; ?>" method="post">
+                                    <form action="/transaksi/delete/<?= $transaksi['kode_transaksi']; ?>" method="post" class="d-inline">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <?= csrf_field(); ?>
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?');">delete</button>

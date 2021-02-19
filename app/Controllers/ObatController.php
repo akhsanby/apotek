@@ -50,7 +50,7 @@ class ObatController extends BaseController
 	public function create()
 	{
 		if (!$this->validate([
-			'kode_obat'		=> 'required|integer|is_unique[obat.kode_obat]',
+			'kode_obat'		=> 'required|integer',
 	        'kode_suplier'  => 'required|integer',
 	        'nama_obat'     => 'required',
 	        'produsen' 		=> 'required',
@@ -86,6 +86,8 @@ class ObatController extends BaseController
 	public function update($kode_obat)
 	{ 
 		if (!$this->validate([
+	        'kode_obat'     => 'required|integer',
+	        'kode_suplier'  => 'required|integer',
 	        'nama_obat'     => 'required',
 	        'produsen' 		=> 'required',
 	        'harga' 		=> 'required|integer',

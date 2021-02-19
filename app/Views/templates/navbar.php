@@ -21,7 +21,7 @@
             <a href="/data/obat" class="nav-link">Data Obat</a>
           </li>
           <li class="nav-item">
-            <a href="/data/suplier" class="nav-link">Data Supplier</a>
+            <a href="/data/suplier" class="nav-link">Data Suplier</a>
           </li>
           <li class="nav-item">
             <a href="/data/transaksi" class="nav-link">Data Transaksi</a>

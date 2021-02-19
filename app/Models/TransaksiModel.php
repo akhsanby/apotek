@@ -9,12 +9,18 @@ class TransaksiModel extends Model
 	protected $table                = 'transaksi';
 	protected $primaryKey           = 'kode_transaksi';
 	protected $protectFields        = true;
-	protected $allowedFields        = ['kode_transaksi', 'id_user', 'nama_pembeli', 'nama_obat', 'tgl_transaksi', 'sub_total', 'total'];
+	protected $allowedFields        = ['kode_transaksi', 'id_user', 'nama_pembeli', 'tgl_transaksi'];
 
-	public function getTransaksi($kode_transaksi = false)
+	public function getTransaksi()
 	{
-		if ($kode_transaksi == false) return $this->findAll();
-		return $this->where(['kode_transaksi' => $kode_transaksi])->first();
+		return $this->db->table('transaksi')
+		->join('detil_transaksi', 'detil_transaksi.kode_transaksi = transaksi.kode_transaksi')
+		->join('obat', 'obat.kode_obat = detil_transaksi.kode_obat')
+		->join('users', 'users.id_user = transaksi.id_user')
+		->get()->getResultArray();
+			
+		// if ($kode_transaksi == false) return $this->findAll();
+		// return $this->where(['kode_transaksi' => $kode_transaksi])->first();
 	}
 
 	public function createTransaksi()
@@ -24,8 +30,7 @@ class TransaksiModel extends Model
 		$data = $request->getVar();
 		$data['id_user'] = session()->get('id_user');
 
-		$this->insert($data);
-		return redirect()->to('/data/transaksi')->withInput()->with('created', 'Berhasil ditambahkan!');
+		return $this->insert($data);
 	}
 
 	public function deleteTransaksi($kode_transaksi)

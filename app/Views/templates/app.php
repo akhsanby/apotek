@@ -75,11 +75,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		    })
 		});
 
-		$(".pilih-obat, .jml-obat").change(function() {
-			let hargaObat = $(".pilih-obat").val();
-			let jml_obat = $(".jml-obat").val();
-			$(".total-harga").val((hargaObat*jml_obat).toString());
+		$(".pilih-obat").change(function() {
+			let harga = $(this).find(':selected').data('harga');
+			$(".jml-obat").change(function() {
+				let jml_obat = $(".jml-obat").val();
+				$(".total-harga").val(harga*jml_obat);
+			});
 		});
+
+		
 	</script>
 </body>
 </html>

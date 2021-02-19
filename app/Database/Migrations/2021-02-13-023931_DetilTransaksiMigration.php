@@ -28,7 +28,7 @@ class DetilTransaksiMigration extends Migration
             ],
         ]);
         $this->forge->addKey('kode_detil', true);
-        $this->forge->addForeignKey('kode_transaksi','transaksi','kode_transaksi','RESTRICT','RESTRICT');
+        $this->forge->addForeignKey('kode_transaksi','transaksi','kode_transaksi','CASCADE','CASCADE');
         $this->forge->addForeignKey('kode_obat','obat','kode_obat');
         $this->forge->createTable('detil_transaksi');
         $this->db->enableForeignKeyChecks();

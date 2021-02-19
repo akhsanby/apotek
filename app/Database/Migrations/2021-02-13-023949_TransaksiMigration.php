@@ -19,18 +19,8 @@ class TransaksiMigration extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'nama_obat' => [
-                'type' => 'VARCHAR',
-                'constraint' => '100',
-            ],
             'tgl_transaksi' => [
                 'type' => 'DATE',
-            ],
-            'sub_total' => [
-                'type' => 'INT',
-            ],
-            'total' => [
-                'type' => 'INT',
             ],
         ]);
         $this->forge->addKey('kode_transaksi', true);

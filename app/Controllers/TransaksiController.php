@@ -3,16 +3,18 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\{TransaksiModel, ObatModel};
+use App\Models\{TransaksiModel, DetilTransaksiModel, ObatModel};
 
 class TransaksiController extends BaseController
 {
 	protected $transaksiModel;
+	protected $detilTransaksiModel;
 	protected $obatModel;
 
 	public function __construct()
 	{
 		$this->transaksiModel = new TransaksiModel();
+		$this->detilTransaksiModel = new DetilTransaksiModel();
 		$this->obatModel = new ObatModel();
 	}
 
@@ -48,14 +50,17 @@ class TransaksiController extends BaseController
 		if (!$this->validate([
 			'kode_transaksi'  => 'required',
 			'nama_pembeli'  => 'required',
-	        'tgl_transaksi'	=> 'required',
-	        'nama_obat'		=> 'required',
-	        'sub_total'		=> 'required|integer',
-	        'total' 		=> 'required|integer'
+			'tgl_transaksi'	=> 'required',
+			'kode_obat'		=> 'required',
+			'sub_total'		=> 'required|integer',
+			'total' 		=> 'required|integer'
 		])) {
 			return redirect()->to('/transaksi/new')->withInput();
 		}
-		return $this->transaksiModel->createTransaksi();
+
+		$this->transaksiModel->createTransaksi();
+		$this->detilTransaksiModel->createDetilTransaksi();
+		return redirect()->to('/data/transaksi')->withInput()->with('created', 'Berhasil ditambahkan!');
 	}
 
 	public function delete($kode_transaksi)
