@@ -26,4 +26,17 @@ class UsersModel extends Model
 			return redirect()->to('/')->withInput();
 		}
 	}
+
+	public function register()
+	{
+		$request = \Config\Services::request();
+
+		$data = [
+			'username' => $request->getVar('username', FILTER_SANITIZE_STRING),
+			'password' => md5($request->getVar('password', FILTER_SANITIZE_STRING))
+		];
+
+		$this->insert($data);
+		return redirect()->to("/login")->withInput()->with('pesan', 'Berhasil didaftarkan!');
+	}
 }
