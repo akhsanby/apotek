@@ -16,5 +16,5 @@ Jalankan perintah dibawah dengan terminal didalam folder apotek
 4. setting database pada .env
 5. php spark migrate
 6. php spark db:seed UserSeeder
-7. php serve serve
+7. php spark serve
 9. username : admin - password : admin
