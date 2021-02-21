@@ -51,12 +51,12 @@ class ObatController extends BaseController
 	{
 		if (!$this->validate([
 			'kode_obat'		=> 'required|integer',
-	        'kode_suplier'  => 'required|integer',
-	        'nama_obat'     => 'required',
-	        'produsen' 		=> 'required',
-	        'harga' 		=> 'required|integer',
-	        'jml_stok' 		=> 'required|integer',
-	        'icon' 			=> 'max_size[icon,1024]|is_image[icon]|mime_in[icon,image/jpg,image/png,image/jpeg]'
+			'kode_suplier'  => 'required|integer',
+			'nama_obat'     => 'required',
+			'produsen' 		=> 'required',
+			'harga' 		=> 'required|integer',
+			'jml_stok' 		=> 'required|integer',
+			'icon' 			=> 'max_size[icon,1024]|is_image[icon]|mime_in[icon,image/jpg,image/png,image/jpeg]'
 		])) {
 			return redirect()->to('/obat/new')->withInput();
 		}
@@ -86,13 +86,13 @@ class ObatController extends BaseController
 	public function update($kode_obat)
 	{ 
 		if (!$this->validate([
-	        'kode_obat'     => 'required|integer',
-	        'kode_suplier'  => 'required|integer',
-	        'nama_obat'     => 'required',
-	        'produsen' 		=> 'required',
-	        'harga' 		=> 'required|integer',
-	        'jml_stok' 		=> 'required|integer'
-	        'icon' 			=> 'max_size[icon,1024]|is_image[icon]|mime_in[icon,image/jpg,image/png,image/jpeg]'
+			'kode_obat'     => 'required|integer',
+			'kode_suplier'  => 'required|integer',
+			'nama_obat'     => 'required',
+			'produsen' 		=> 'required',
+			'harga' 		=> 'required|integer',
+			'jml_stok' 		=> 'required|integer',
+			'icon' 			=> 'max_size[icon,1024]|is_image[icon]|mime_in[icon,image/jpg,image/png,image/jpeg]'
 		])) {
 			// dd($this->validation->getError('kode_obat'));
 			return redirect()->to('/obat/edit/' . $kode_obat)->withInput();

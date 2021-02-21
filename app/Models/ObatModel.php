@@ -58,7 +58,7 @@ class ObatModel extends Model
 
 		$data = $request->getVar();
 		$data['icon'] = $namaIcon;
-
+	
 		$this->update($kode_obat ,$data);
 		return redirect()->to('/data/obat')->withInput()->with('updated', 'Berhasil diubah!');
 	}

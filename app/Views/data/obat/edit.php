@@ -10,13 +10,13 @@
 					<div class="card card-primary">
 						<form role="form" action="/obat/update/<?= $obat['kode_obat']; ?>" method="post" enctype="multipart/form-data">
 							<div class="card-body">
-								<input type="hidden" name="_method" value="PUT">
+								<input type="hidden" name="_method" value="PUT"/>
 								<input type="hidden" name="iconLama" value="<?= $obat['icon'] ?>">
 								<?= csrf_field(); ?>
 								<div class="row">
 									<div class="form-group col-md-6">
 										<label for="kode_obat">Kode Obat</label>
-										<input type="text" name="kode_obat" class="form-control <?= $validation->hasError('kode_obat') ? 'is-invalid' : '' ?>" id="kode_obat" value="<?= $obat['kode_obat'] ?>" readonly>
+										<input type="text" name="kode_obat" class="form-control <?= ($validation->getError('kode_obat')) ? 'is-invalid' : '' ?>" id="kode_obat" value="<?= $obat['kode_obat'] ?>" readonly>
 										<div class="invalid-feedback">
 											<?= $validation->getError('kode_obat') ?>
 										</div>
@@ -28,7 +28,7 @@
 								</div>
 								<div class="form-group">
 									<label for="nama_obat">Nama Obat</label>
-									<input type="text" name="nama_obat" class="form-control <?= $validation->hasError('nama_obat') ? 'is-invalid' : '' ?>" id="nama_obat" value="<?= (old('nama_obat')) ? old('nama_obat') : $obat['nama_obat'] ?>">
+									<input type="text" name="nama_obat" class="form-control <?= ($validation->hasError('nama_obat')) ? 'is-invalid' : '' ?>" id="nama_obat" value="<?= (old('nama_obat')) ? old('nama_obat') : $obat['nama_obat'] ?>">
 									<div class="invalid-feedback">
 										<?= $validation->getError('nama_obat') ?>
 									</div>

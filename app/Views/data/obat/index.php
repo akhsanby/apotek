@@ -46,7 +46,7 @@
 								<td><?= $obat['kode_suplier']; ?></td>
 								<td><?= $obat['nama_obat']; ?></td>
 								<td><?= $obat['produsen']; ?></td>
-								<td><?= $obat['harga']; ?></td>
+								<td>Rp. <?= $obat['harga']; ?></td>
 								<td><?= $obat['jml_stok']; ?></td>
 								<td>
 									<a href="/obat/edit/<?= $obat['kode_obat'] ?>" class="btn btn-success">edit</a>
